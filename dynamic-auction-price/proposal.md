@@ -1,19 +1,19 @@
 # Add a Dynamic Reserve Price for the Auctions
 
-Hello, we are the founding and operating members of the Japanese-speaking sub-DAO, “pNouns,” (owning Noun #553/#556), and the members of “Crypto Learning Club (CLC),” (owning Noun #605/#606).
+Hello, we are the founding and operating members of the Japanese-speaking sub-DAO, [pNouns](https://pnouns.wtf/), (owning Noun #553/#556), and the members of [Crypto Learning Club (CLC)](https://cryptolearningclub.org/), (owning Noun #605/#606).
 
-## TL;DL:
-Observing the stagnant winning bids for #853 / #854 / #855 auctions (just under 20ETH), it is evident that the current NFT auction system is likely to attract even more arbitrageurs.
-The increase in arbitrageurs will lead to a stagnation in NounsDAO by strategically opposing any proposals made during the first fork.
-In order to continue the auctions while preventing the entry of arbitrageurs, we propose a contract to set the dynamic reserve price for NFT auctions at a value equal to or greater than the current pro-rata share of a single Noun = "the treasury at the start of the auction divided by the number of remaining NFTs."
+## TL;DL
+- Observing the stagnant winning bids for #853 / #854 / #855 auctions (just under 20ETH), it is evident that the current NFT auction system is likely to attract even more arbitrageurs.
+- The increase in arbitrageurs will lead to a stagnation in NounsDAO by strategically opposing any proposals made during the first fork.
+- In order to continue the auctions while preventing the entry of arbitrageurs, we propose a contract to set the dynamic reserve price for NFT auctions at a value equal to or greater than the current pro-rata share of a single Noun = "the treasury at the start of the auction divided by the number of remaining NFTs."
 
 We propose this as a candidate proposal to start a discussion within the community.
 
 Any feedback is welcome.
 
-We will update the proposal documents [here]().
+We will update the proposal documents [here](https://github.com/openreachtech/nounsdao-proposals).
 
-As for the future process, If there is a lot of support for the proposal to add a dynamic reserve price, we would like to update the Candidate Proposal and submit the implementation part as well.
+As for the future process, if there is enough support for adding a dynamic reserve price, we would like to update the candidate proposal and submit the implementation part as well.
 
 ## Structural Issues Facing NounsDAO
 ### What's Happening?
@@ -34,10 +34,10 @@ The holders that remain in the main NounsDAO own roughly 380 Nouns, sharing a be
 
 However, recent signs indicate a looming issue. This is evident in the recent auctions, #853 / #854 / #855, where winning bids have dipped below 20 ETH each, once again creating an opportunity for arbitrageurs.
 
-A Possible Scenario by Doing Nothing
-As of the time of writing this proposal, Noun NFTs have already been acquired by arbitrageurs (the user who won #854 has a history of past forks Link to Etherscan) With one Noun generated daily, there's a possibility of arbitrageurs putting in winning bids with an intention of liquidating Nouns, similar to the previous fork.
+### A Possible Scenario by Doing Nothing
+As of the time of writing this proposal, Noun NFTs have already been acquired by arbitrageurs (the user who won #854 has a history of past forks [Link to Etherscan](https://etherscan.io/address/0x67DaCc258DCCc8CbFB493c652ab5170C3CFf0AD9#nfttransfers)). With one Noun generated daily, there's a possibility of arbitrageurs putting in winning bids with an intention of liquidating Nouns, similar to the previous fork.
 
-Without taking corrective action,  the on-chain voting mechanism of Nouns suggests that the faction expecting liquidation will likely vote against all proposals. Their aim is to prevent a reduction in the treasury wallet's amount for the next 100 to 200 days, which will lead to a stagnation in NounsDAO's operations (This blog also provides insights into the impact of the forking mechanism on floor prices).
+Without taking corrective action,  the on-chain voting mechanism of Nouns suggests that the faction expecting liquidation will likely vote against all proposals. Their aim is to prevent a reduction in the treasury wallet's amount for the next 100 to 200 days, which will lead to a stagnation in NounsDAO's operations ([This blog](https://mirror.xyz/cfeng.eth/8j9FljMPp2COKLovoHF6j9P1I_lSP-xzSh8QM8cw1iE) also provides insights into the impact of the forking mechanism on floor prices).
 
 
 Therefore, we believe it's imperative to deliberate and implement appropriate measures before arbitrageurs potentially take control of NounsDAO.
@@ -54,19 +54,19 @@ During periods of high demand and enthusiasm for NFTs and cryptocurrencies, this
 ### Consensus on the Future of NounsDAO
 With the first fork period finished, NounsDAO needs to establish consensus across the entire DAO on the following matters and modify the format of NFT auctions to better suit the current circumstances. 
 
-Continuing NFT issuance is equal to "fundraising,” from a financial perspective.
-When the market is experiencing a downturn or lacks corresponding business revenue, the “NFT floor price” calculated from the market capitalization will decrease. or if there is no accompanying business revenue model, the "NFT floor price" derived from the market capitalization will decrease.
-As the "NFT floor price" decreases, the risk of being targeted by strategic arbitrageurs will rise again.
-Post-fork, NounsDAO still possesses a substantial reserve of 13,000 ETH for ongoing operations.
-Implement a change in the NFT auction format to completely eliminate external pressure from arbitrageurs (this is our proposal).
-Advance discussions and manifestos to create a more effective fundraising mechanism for NounsDAO.
+1. Continuing NFT issuance is equal to "fundraising,” from a financial perspective.
+2. When the market is experiencing a downturn or lacks corresponding business revenue, the “NFT floor price” calculated from the market capitalization will decrease. or if there is no accompanying business revenue model, the "NFT floor price" derived from the market capitalization will decrease.
+3. As the "NFT floor price" decreases, the risk of being targeted by strategic arbitrageurs will rise again.
+4. Post-fork, NounsDAO still possesses a substantial reserve of 13,000 ETH for ongoing operations.
+5. **Implement a change in the NFT auction format to completely eliminate external pressure from arbitrageurs (this is our proposal).**
+6. Advance discussions to create a more effective fundraising mechanism for NounsDAO.
 
 ### Detailed Proposal Explanation
 We will now provide a thorough explanation of the proposed changes:
 
-By updating the NounsAuctionHouse contract, we aim to add a dynamic minimum reserve price for the auction. This minimum bid will be set at a value equal to or greater than the current pro-rata share of a single noun . The value will be calculated by the formula below.
+By updating the NounsAuctionHouse contract, we aim to add a dynamic minimum reserve price for the auction. This minimum bid will be set at **a value equal to or greater than the current pro-rata share of a single noun**. The value will be calculated by the formula below.
 
-minimum bid price = the treasury amount at the start of the auction /the number of remaining Nouns NFTs
+**minimum bid price = the treasury amount at the start of the auction / the number of remaining Nouns NFTs**
 
 Also the treasury amount will be the total sum of ETH, stETH, and USDC held by the DAO.
 
