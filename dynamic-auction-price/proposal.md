@@ -7,13 +7,10 @@ Hello, we are the founding and operating members of the Japanese-speaking sub-DA
 - The increase in arbitrageurs will lead to a stagnation in NounsDAO by strategically opposing any proposals made during the first fork.
 - In order to continue the auctions while preventing the entry of arbitrageurs, we propose a contract to set the dynamic reserve price for NFT auctions at a value equal to or greater than the current pro-rata share of a single Noun = "the treasury at the start of the auction divided by the number of remaining NFTs."
 
-We propose this as a candidate proposal to start a discussion within the community.
 
-Any feedback is welcome.
+**Note**
 
-We will update the proposal documents [here](https://github.com/openreachtech/nounsdao-proposals).
-
-As for the future process, if there is enough support for adding a dynamic reserve price, we would like to update the candidate proposal and submit the implementation part as well.
+We propose this as a candidate proposal to start a discussion within the community. Any feedback is welcome. We will update the proposal documents [here](https://github.com/openreachtech/nounsdao-proposals). As for the future process, if there is enough support for adding a dynamic reserve price, we would like to update the candidate proposal and submit the implementation part as well.
 
 ## Structural Issues Facing NounsDAO
 ### What's Happening?
@@ -64,7 +61,7 @@ With the first fork period finished, NounsDAO needs to establish consensus acros
 ### Detailed Proposal Explanation
 We will now provide a thorough explanation of the proposed changes:
 
-By updating the NounsAuctionHouse contract, we aim to add a dynamic minimum reserve price for the auction. This minimum bid will be set at **a value equal to or greater than the current pro-rata share of a single noun**. The value will be calculated by the formula below.
+By updating the `NounsAuctionHouse` contract, we aim to add a dynamic minimum reserve price for the auction. This minimum bid will be set at **a value equal to or greater than the current pro-rata share of a single noun**. The value will be calculated by the formula below.
 
 **minimum bid price = the treasury amount at the start of the auction / the number of remaining Nouns NFTs**
 
@@ -72,29 +69,27 @@ Also the treasury amount will be the total sum of ETH, stETH, and USDC held by t
 
 e.g., the minimum bid price as of writing this proposal would be 35.09ETH = 13,547 (ETH) / 386 
 
-Implementing this minimum bid price, determined by the treasury amount, will effectively prevent winning bids from being lower than the ETH obtained when rage quitting, such as the current bids hovering around 20ETH.
+By determining a minimum bid based on the Treasury amount, it will not be possible to make purchases below the average Treasury amount, as is currently the case with auctions at around 20 ETH.
 
-Should no bids exceeding the minimum bid price be placed, the auctioned Noun NFT will be burned. This process will keep the total number of Nouns NFTs and the overall treasury amount unchanged, achieving a similar effect to pausing the auction (preventing purchases by arbitrageurs).
+If no bids are placed above the minimum reserve price, the Nouns NFTs will be burned. The total number of NounsNFTs and the total amount of treasury will remain the same, effectively having the same effect as if the auction had been stopped (i.e., preventing arbitrager purchases).
 
-In cases where bids surpass the minimum bid price, the user with the highest bid will receive the Nouns NFT, just as they did in current auctions. Since the winning bid exceeds the pro-rata share, it will increase the value of each Noun NFT. This influx of new users, who are not arbitrageurs, will stimulate the healthy growth of NounsDAO and elevate the value of Nouns NFTs.
+In cases where bids surpass the minimum reserve price, the user with the highest bid will receive the Nouns NFT, just as they did in current auctions. Since the winning bid exceeds the pro-rata share, it will increase the value of each Noun NFT. This influx of new users, who are not arbitrageurs, will stimulate the healthy growth of NounsDAO and elevate the value of Nouns NFTs.
 
-Anticipated Scenario with the Implementation of Minimum Bid Price
+### Anticipated Scenario with the Implementation of Minimum Reserve Price
 Based on recent auction prices, it is expected that there will be a limited number of users willing to bid above the current pro-rata share of a single noun. Consequently, there will likely be a period of standstill in the auctions, with no notable increase in new NFT holders.
-
 
 On a positive note, funding Nounish proposals from the treasury will still be viable, without concerns about arbitrageurs. This allows for a smooth processing of Nouns proposals as usual.
 
 Given that it's shortly after the fork, it's presumed that not many arbitrageurs are left in the DAO. This, in turn, will enhance the intrinsic value of Nouns IP, and active funding for Nounish proposals will be made possible.
 
-Moreover, with proactive funding, the overall amount in the treasury will gradually decrease, resulting in a reduction of the minimum bid price. This, in turn, will attract new Nouns holders.
+Moreover, with proactive funding, the overall amount in the treasury will gradually decrease, resulting in a reduction of the minimum reserve price. This, in turn, will attract new Nouns holders.
 
-The post-fork challenge for NounsDAO lies in elevating the quality of proposals and exploring more effective ways to utilize the funds. With the introduction of the minimum bid price based on the treasury, it becomes imperative to increase the number of users bidding above the average treasury amount to acquire new Nouns holders. Therefore, it's crucial to take an active approach to using the treasury funds.
+The post-fork challenge for NounsDAO lies in elevating the quality of proposals and exploring more effective ways to utilize the funds. With the introduction of the minimum reserve price based on the treasury, it becomes imperative to increase the number of users bidding above the average treasury amount to acquire new Nouns holders. Therefore, it's crucial to take an active approach to using the treasury funds.
 
 ## Summary
 This proposal may seem like a passive attempt to preserve the assets in the treasury. However, considering the current situation where there is an economic threat from external sources (arbitrageurs), it is natural to consider measures to prevent the stagnation of DAO activities and to eliminate external pressure for survival.
 
 Furthermore, this proposal serves to clarify the original purpose of utilizing Nouns' treasury for Nounish proposals, rather than for the profit of arbitrageurs.
-
 
 Decision-making for funding in a DAO is a complex matter, and while NounsDAO's structure shows promise, there is still room for improvement.
 
